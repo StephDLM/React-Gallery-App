@@ -1,5 +1,5 @@
 import React from 'react';
-import PhotoList from './Photos';
+import Photos from './Photos';
 
 const GifList = props => { 
   
@@ -10,4 +10,4 @@ const GifList = props => {
   );
 }
 
-export default PhotosList;
+// export default PhotosList;
