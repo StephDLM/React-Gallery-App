@@ -1,5 +1,5 @@
 import React from 'react';
-import Photos from './Photos';
+import PhotoList from './Photos';
 
 const GifList = props => { 
   
