@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom'; 
 
-export default class SearchForm extends Component {
-  
-  state = {
-    searchText: ''
+class SearchForm extends Component {
+  constructor (){
+    super();
+    this.state = {
+      searchText: ''
+    }
   }
-  
+
   onSearchChange = e => {
     this.setState({ searchText: e.target.value });
   }
@@ -28,3 +31,5 @@ export default class SearchForm extends Component {
       </form>      
     );
   }}
+
+  export default withRouter(SearchForm);
