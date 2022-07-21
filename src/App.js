@@ -31,19 +31,22 @@ export default class App extends Component {
   performSearch = (query = 'greatdanes') => { //fetching the data and putting in the array --> call this whenever performing a search 
     fetch(`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${query}&per_page=24&format=json&nojsoncallback=1`)
     .then(response => response.json())
-    .then(response => {
+    .then(response => { 
+      console.log(this.performSearch);
         if (query === 'greatdane'){
-          this.setState({ greatdane: response.data.data});         
+          this.setState({ greatdane: response.data.photos.photos});         
         } else if (query === 'lakes'){
-          this.setState({ lakes: response.data.data});           
+          this.setState({ lakes: response.data.photos.photos});           
         } else if (query === 'trees'){
-          this.setState({ trees: response.data.data});         
+          this.setState({ trees: response.data.photos.photos});         
          } else {
-          this.setState({photos: response.data.data});
+          this.setState({ photos: response.data.photos.photos});
+          this.setState ({ query: query});
          }
+          this.setState({loading: false});
       
         }) 
-
+//response --> console log this response, get an array of 24 objects and gives the information for each 
       .catch(error => {
         console.log('Error fetching and parsing data', error);
       })
@@ -66,6 +69,6 @@ export default class App extends Component {
 }
 
 
-
+<Route path='/' render={ () => <SearchForm onSearch={this.performSearch}/>} />
 //https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${47fe07c047b16c73aa3906cbd27cf826}&tags=cats&per_page=24&format=json&nojsoncallback=1
 //https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${47fe07c047b16c73aa3906cbd27cf826}&tags=${query}&per_page=24&format=json&nojsoncallback=1

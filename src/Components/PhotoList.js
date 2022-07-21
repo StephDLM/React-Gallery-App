@@ -4,7 +4,14 @@ import NotFound from './NotFound';
 
 
 class PhotoList extends Component { 
-
+  render(){
+    return(
+      <div className="photo-container">
+      <h1>Results</h1>
+      <ul>{ Photos }</ul>
+      </div>
+    )
+  }
 PhotoList = (props) => { 
   const results = props.data;
   let photos;
@@ -19,12 +26,7 @@ PhotoList = (props) => {
       photos = <NotFound/>
     )}
 
-  return(
-    <div className="photo-container">
-    <h1>Results</h1>
-    <ul>{ photos }</ul>
-    </div>
-  );
+
 }}
 
 export default PhotoList;
