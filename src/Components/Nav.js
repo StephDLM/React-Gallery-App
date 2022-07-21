@@ -5,7 +5,7 @@ class Nav extends Component {
     constructor(){
         super()
         this.state = {
-            onClick: ''
+            // onClick: ''
         }};
     render(){
         return (
