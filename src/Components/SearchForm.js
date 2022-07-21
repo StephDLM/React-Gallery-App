@@ -2,12 +2,9 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom'; 
 
 class SearchForm extends Component {
-  constructor (){
-    super();
-    this.state = {
-      searchText: ''
-    }
-  }
+  state = {
+    searchText: ''
+  };
 
   onSearchChange = e => {
     this.setState({ searchText: e.target.value });
@@ -26,7 +23,8 @@ class SearchForm extends Component {
         <input type="search" 
                onChange={this.onSearchChange}
                name="search" 
-               placeholder="Search..." />
+               ref={(input)=> this.searchText = input} 
+               placeholder="Search..." required />
         <button type="submit" id="submit" className="search-button"><i className="material-icons icn-search">search</i></button>
       </form>      
     );
