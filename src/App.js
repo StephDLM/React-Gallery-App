@@ -60,18 +60,27 @@ export default class App extends Component {
         return (
           <BrowserRouter>
             <div className="container">
-                <h1 className="main-title">Steph's Photo Search</h1>
-                <SearchForm onSearch={this.performSearch} />      
-            </div>    
+                <h1 className="main-title"> Steph's Photo Search </h1>
+                <SearchForm onSearch={this.performSearch} />
+              </div>  
             <div className="main-content">
               <PhotoList data={this.state.photos} />
             </div>
           </BrowserRouter>
         );
       }
+      
     
 }
 //image handler--> need to add, 
 
-
-<Route path='/' render={ () => <SearchForm onSearch={this.performSearch}/>} />
+<div>
+<Route exact path='/'
+render={ () => <PhotoList to={this.state.photo} /> } />
+<Route exact path='/greatdanes'
+render={ () => <PhotoList data={this.state.greatdanes} /> } />         
+<Route exact path='/lakes'
+render={ () => <PhotoList data={this.state.lakes} /> } />      
+<Route exact path='/trees'
+render={ () => <PhotoList data={this.state.trees} /> } />   
+</div>
