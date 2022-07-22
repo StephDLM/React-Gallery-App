@@ -69,6 +69,7 @@ export default class App extends Component {
           </BrowserRouter>
         );
       }
+    
 }
 //image handler--> need to add, 
 
