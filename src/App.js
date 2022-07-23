@@ -56,7 +56,7 @@ export default class App extends Component {
       };
 
       render() { 
-        // console.log(this.state.photos);
+        console.log(this.state.photos);
         return (
           
           <BrowserRouter>
@@ -64,16 +64,15 @@ export default class App extends Component {
                 <h1 className="main-title"> Steph's Fun Photo Gallery </h1>
                 <SearchForm onSearch={this.performSearch} />
             <Nav/>
-            {
+          
             <Switch>           
-            <Route  exact path='/' render={() => <PhotoList data={this.state.photos} />} />
-            <Route  exact path='/greatdane' render={() => <PhotoList data={this.state.greatdane} />} /> 
-            <Route  exact path='/lakes' render={() => <PhotoList data={this.state.lakes} />} /> 
-            <Route  exact path='/trees' render={() => <PhotoList data={this.state.trees} />} />  
-            <Route  exact path='/*' render={() => <NotFound />} />  
-
-          </Switch>
-            }
+              <Route  exact path='/' render={() => <PhotoList data={this.state.photos} />} />
+              <Route  exact path='/greatdane' render={() => <PhotoList data={this.state.greatdane} />} /> 
+              <Route  exact path='/lakes' render={() => <PhotoList data={this.state.lakes} />} /> 
+              <Route  exact path='/trees' render={() => <PhotoList data={this.state.trees} />} />  
+              <Route  exact path='/*' render={() => <NotFound />} />  
+            </Switch>
+          
             {/* <div className="main-content">
               <PhotoList data={this.state.photos} />
             </div> */}

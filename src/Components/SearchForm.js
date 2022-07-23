@@ -7,6 +7,7 @@ class SearchForm extends Component {
     searchText: ''
   };
 
+  //handler text input 
   onSearchChange = e => {
     this.setState({ searchText: e.target.value });
   }
