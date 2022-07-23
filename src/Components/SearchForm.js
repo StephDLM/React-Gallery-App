@@ -10,16 +10,9 @@ class SearchForm extends Component {
   onSearchChange = e => {
     this.setState({ searchText: e.target.value });
   }
-  
-  // handleSubmit = e => {
-  //   e.preventDefault();
-  //   this.props.onSearch(this.state.searchText);
-  //   e.currentTarget.reset();
-  // }
 
   handleSubmit = e => {
     let searchPath = `/${this.state.searchText}`;
-
     e.preventDefault();
     this.props.onSearch(this.state.searchText);
     this.props.history.push(searchPath);
@@ -29,7 +22,6 @@ class SearchForm extends Component {
   render() {  
     return (
       <form className="search-form" onSubmit={this.handleSubmit} >
-        {/* <label className="is-hidden" htmlFor="search">Search</label> */}
         <input type="search" 
                onChange={this.onSearchChange}
                name="search" 

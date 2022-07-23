@@ -1,8 +1,6 @@
 import React from 'react';
-// import { NavLink } from 'react-router-dom';
 import PhotoList from './PhotoList';
-import { withRouter, NavLink } from 'react-router-dom'; 
-
+import { NavLink } from 'react-router-dom'; 
 
 const Nav = (props) => {
 
