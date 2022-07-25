@@ -5,7 +5,7 @@ import apiKey from './Config';
 
 // import Components
 import Nav from './Components/Nav';
-import Photos from './Components/Photos';
+// import Photos from './Components/Photos';
 import NotFound from './Components/NotFound';
 import PhotoList from './Components/PhotoList';
 import SearchForm from './Components/SearchForm';
@@ -58,24 +58,22 @@ export default class App extends Component {
       render() { 
         console.log(this.state.photos);
         return (
-          
+    
           <BrowserRouter>
             <div className="container">
                 <h1 className="main-title"> Steph's Fun Photo Gallery </h1>
                 <SearchForm onSearch={this.performSearch} />
             <Nav/>
-          
-            <Switch>           
+          {/*order matters */}
+            <Switch>     
               <Route  exact path='/' render={() => <PhotoList data={this.state.photos} />} />
               <Route  exact path='/greatdane' render={() => <PhotoList data={this.state.greatdane} />} /> 
               <Route  exact path='/lakes' render={() => <PhotoList data={this.state.lakes} />} /> 
-              <Route  exact path='/trees' render={() => <PhotoList data={this.state.trees} />} />  
+              <Route  exact path='/trees' render={() => <PhotoList data={this.state.trees} />} />
+              <Route  exact path='/:query' render={() => <PhotoList data={this.state.photos} />} />    
               <Route  exact path='/*' render={() => <NotFound />} />  
             </Switch>
-          
-            {/* <div className="main-content">
-              <PhotoList data={this.state.photos} />
-            </div> */}
+        
             </div> 
           </BrowserRouter>
         );
