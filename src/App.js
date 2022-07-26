@@ -34,12 +34,11 @@ export default class App extends Component {
   
   }
   
-  performSearch = (query = 'chairs') => { //fetching the data and putting in the array --> call this whenever performing a search 
+  //fetching the data and putting in the array --> call this whenever performing a search 
+  performSearch = (query = 'chairs') => { 
     fetch(`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${query}&per_page=24&format=json&nojsoncallback=1`)
     .then(response => response.json())
     .then(data => { 
-      // console.log(data)
-      // console.log(this.performSearch);
         if (query === 'greatdane'){
           this.setState({ greatdane: data.photos.photo,
                           loading: false }); 

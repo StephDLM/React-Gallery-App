@@ -3,7 +3,7 @@ import Photos from './Photos';
 import NotFound from './NotFound';
 
 
-const PhotoList = (props) => { 
+const PhotoList = (props) => { //using prop to access url for photo data
   const results = props.data;
   let photos;
   if(results.length > 0){
