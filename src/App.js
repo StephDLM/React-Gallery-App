@@ -9,6 +9,7 @@ import Nav from './Components/Nav';
 import Error from './Components/Error';
 import PhotoList from './Components/PhotoList';
 import SearchForm from './Components/SearchForm';
+import NotFound from './Components/NotFound';
 
 
 //import component in config
@@ -78,7 +79,9 @@ export default class App extends Component {
                 <Route  exact path='/lakes' render={() => <PhotoList data={this.state.lakes} />} /> 
                 <Route  exact path='/trees' render={() => <PhotoList data={this.state.trees} />} />
                 <Route  exact path='/:query' render={() => <PhotoList data={this.state.photos} />} />    
-                <Route  exact path='/*' render={() => <Error />} />  
+                <Route  exact path='/*' render={() => <NotFound />} />  
+                <Route  component={Error} />  
+
 
             </Switch>
             }
