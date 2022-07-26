@@ -78,10 +78,10 @@ export default class App extends Component {
                 <Route  exact path='/greatdane' render={() => <PhotoList data={this.state.greatdane} />} /> 
                 <Route  exact path='/lakes' render={() => <PhotoList data={this.state.lakes} />} /> 
                 <Route  exact path='/trees' render={() => <PhotoList data={this.state.trees} />} />
-                <Route  exact path='/:query' render={() => <PhotoList data={this.state.photos} />} />    
+                <Route  exact path='/search/:query' render={() => <PhotoList data={this.state.photos} />} />    
                 <Route  exact path='/*' render={() => <NotFound />} />  
                 <Route  component={Error} />  
-
+                
 
             </Switch>
             }
