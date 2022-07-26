@@ -6,9 +6,10 @@ import apiKey from './Config';
 // import Components
 import Nav from './Components/Nav';
 // import Photos from './Components/Photos';
-import NotFound from './Components/NotFound';
+import Error from './Components/Error';
 import PhotoList from './Components/PhotoList';
 import SearchForm from './Components/SearchForm';
+
 
 //import component in config
 export default class App extends Component {
@@ -19,7 +20,8 @@ export default class App extends Component {
       photos: [],
       greatdane: [],
       lakes: [],
-      trees: []
+      trees: [],
+      loading: true
     };
   } 
 //video: giffy react course to pass props and iterate over that data map. --> ph 
@@ -38,13 +40,17 @@ export default class App extends Component {
       // console.log(data)
       // console.log(this.performSearch);
         if (query === 'greatdane'){
-          this.setState({ greatdane: data.photos.photo}); 
+          this.setState({ greatdane: data.photos.photo,
+                          loading: false }); 
         } else if (query === 'lakes'){
-          this.setState({ lakes: data.photos.photo});           
+          this.setState({ lakes: data.photos.photo,
+                          loading: false });           
         } else if (query === 'trees'){
-          this.setState({ trees: data.photos.photo});         
+          this.setState({ trees: data.photos.photo,
+                          loading: false });         
          } else {
-          this.setState({ photos: data.photos.photo});
+          this.setState({ photos: data.photos.photo,
+                          loading: false });
          }      
         })
 
@@ -63,16 +69,20 @@ export default class App extends Component {
             <div className="container">
                 <h1 className="main-title"> Steph's Fun Photo Gallery </h1>
                 <SearchForm onSearch={this.performSearch} />
-            <Nav/>
-          {/*order matters */}
-            <Switch>     
-              <Route  exact path='/' render={() => <PhotoList data={this.state.photos} />} />
-              <Route  exact path='/greatdane' render={() => <PhotoList data={this.state.greatdane} />} /> 
-              <Route  exact path='/lakes' render={() => <PhotoList data={this.state.lakes} />} /> 
-              <Route  exact path='/trees' render={() => <PhotoList data={this.state.trees} />} />
-              <Route  exact path='/:query' render={() => <PhotoList data={this.state.photos} />} />    
-              <Route  exact path='/*' render={() => <NotFound />} />  
+            <Nav/>{
+          (this.state.loading)
+          ? <p>Loading...</p>
+            :<Switch>     
+                <Route  exact path='/' render={() => <PhotoList data={this.state.photos} />} />
+                <Route  exact path='/greatdane' render={() => <PhotoList data={this.state.greatdane} />} /> 
+                <Route  exact path='/lakes' render={() => <PhotoList data={this.state.lakes} />} /> 
+                <Route  exact path='/trees' render={() => <PhotoList data={this.state.trees} />} />
+                <Route  exact path='/:query' render={() => <PhotoList data={this.state.photos} />} />    
+                <Route  exact path='/*' render={() => <Error />} />  
+
             </Switch>
+            }
+
         
             </div> 
           </BrowserRouter>
