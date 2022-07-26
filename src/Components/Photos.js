@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Photos = props => {
+const Photos = props => {  //using prop to access url
     return (    
         <li>
             <img src={props.url} alt="" /> 
@@ -8,4 +8,3 @@ const Photos = props => {
 );
 };
  export default Photos;
- //using prop to access url
